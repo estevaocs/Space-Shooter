@@ -5,6 +5,21 @@ public class DestroyByContact : MonoBehaviour {
 
     public GameObject explosion;
     public GameObject playerExplosion;
+    public int scoreValue;
+    private GameController gameController;
+
+    private void Start()
+    {
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            gameController = gameControllerObject.GetComponent<GameController>();
+        }
+        if (gameController == null)
+        {
+            Debug.Log ("Não foi encontrado o script 'GameController'");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +32,7 @@ public class DestroyByContact : MonoBehaviour {
             }
             Destroy(other.gameObject);
             Destroy(gameObject);
+            gameController.GetComponent<GameController>().AddScore(scoreValue);
         }
         
     }
