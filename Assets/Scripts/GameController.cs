@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Application.LoadLevel(Application.loadedLevel);
+                SceneManager.LoadScene("Main", LoadSceneMode.Single);
             }
         }
     }
@@ -74,7 +75,8 @@ public class GameController : MonoBehaviour
                 score = 0;
             }
             UpdateScore();
-        }   
+        }
+   
     }
 
     void UpdateScore()
